@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Todo Management App</title>
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="my-app.css" />
+  </head>
+  <body>
+    <main class="TodoPageMain">
+      <article class="TodoPage-article">
+        <h1 class="TodoPage-title">My Todo-list</h1>
+        <section class="AddTodo">
+          <input class="AddTodo-text" type="text" placeholder="What's next ?" />
+          <input class="AddTodo-date" type="date" />
+          <input class="AddTodo-button" type="button" value="Add" />
+        </section>
+        <section class="TodoSection">
+          <div class="TodoSection-title">
+            <p class="TodoSectionTitle-text">Due Today</p>
+            <p class="TodoSection-remainingCount">0/4</p>
+          </div>
+          <ul>
+            <li class="TodoItem">
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                This is the first todo
+                <p class="TodoItem-overdue">Overdue</p>
+                <a class="TodoItem-delete" href="">Delete</a>
+              </label>
+            </li>
+            <li class="TodoItem">
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                Refill groceries
+                <a class="TodoItem-delete" href="">Delete</a>
+              </label>
+            </li>
+          </ul>
+        </section>
+        <section class="TodoSection">
+          <div class="TodoSection-title">
+            <p class="TodoSectionTitle-text">Due Tomorrow</p>
+            <p class="TodoSection-remainingCount">2/4</p>
+          </div>
+          <ul>
+            <li class="TodoItem">
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                Submit SaaS project
+                <a class="TodoItem-delete" href="">Delete</a>
+              </label>
+            </li>
+            <li class="TodoItem">
+              <label class="TodoItem-container">
+                <input class="TodoItem-checkbox" type="checkbox" />
+                Buy eggs
+                <a class="TodoItem-delete" href="">Delete</a>
+              </label>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
