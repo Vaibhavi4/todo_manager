@@ -20,6 +20,10 @@ class Todo < ActiveRecord::Base
         all.where(completed: true)
     end
 
+    def self.important
+        all.where(important: true)
+    end
+
     def self.show_list
         puts "My Todo List\n\n"
         puts "Overdue\n"
@@ -41,4 +45,12 @@ class Todo < ActiveRecord::Base
         todo.save!
         todo
     end
+
+    def self.mark_as_important!(id)
+        todo = find(id)
+        todo.important = true
+        todo.save!
+        todo
+    end
+    
 end

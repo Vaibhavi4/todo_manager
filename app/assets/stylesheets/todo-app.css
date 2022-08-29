@@ -7,7 +7,7 @@
 */
 body {
   font-family: Open Sans, sans-serif;
-  max-width: 460px;
+  max-width: 700px;
   margin: 0 auto;
   font-weight: lighter;
 }
@@ -89,9 +89,11 @@ body {
 }
 
 .TodoItem {
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 8px;
   margin-bottom: 6px;
+  font-weight: 350;
+  letter-spacing: 1px;
   color: #453c52;
 }
 
@@ -99,6 +101,10 @@ body {
   font-size: 10px;
   color: #34234b;
   margin-left: 10px;
+}
+
+.TodoItem-completedText {
+  text-decoration: line-through;
 }
 
 .TodoItem-container {
@@ -118,6 +124,10 @@ body {
 
 .TodoItem-delete {
   visibility: hidden;
+  margin-left: 8px;
+}
+
+.TodoItem-important {
   margin-left: 8px;
 }
 
