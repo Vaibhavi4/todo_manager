@@ -10954,3 +10954,87 @@ Completed 200 OK in 138ms (Views: 127.9ms | ActiveRecord: 9.6ms | Allocations: 5
 
 
   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5350916442594422490)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToTodos (20220901075628)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "todos" ADD "user_id" bigint[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220901075628"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5350916442594422490)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["firstname", "test"], ["lastname", nil], ["email", nil], ["password_digest", "[FILTERED]"], ["created_at", "2022-09-01 08:04:50.435334"], ["updated_at", "2022-09-01 08:04:50.435334"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTodo Create (0.6ms)[0m  [1m[32mINSERT INTO "todos" ("todo_text", "due_date", "completed", "important", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["todo_text", "abcd"], ["due_date", "2022-09-01"], ["completed", false], ["important", nil], ["created_at", "2022-09-01 08:08:58.313596"], ["updated_at", "2022-09-01 08:08:58.313596"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/todos" for ::1 at 2022-09-01 13:39:16 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TodosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering todos/index.html.erb within layouts/application
+  [1m[36mTodo Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date < '2022-09-01') AND "todos"."completed" = $1[0m  [["completed", true]]
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date < '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE (due_date < '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:7
+  Rendered todos/_todo-section.html.erb (Duration: 10.3ms | Allocations: 4465)
+  [1m[36mTodo Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date = '2022-09-01') AND "todos"."completed" = $1[0m  [["completed", true]]
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date = '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE (due_date = '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:7
+  Rendered todos/_todo-section.html.erb (Duration: 14.8ms | Allocations: 7810)
+  [1m[36mTodo Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date > '2022-09-01') AND "todos"."completed" = $1[0m  [["completed", true]]
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date > '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE (due_date > '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:7
+  Rendered todos/_todo-section.html.erb (Duration: 4.0ms | Allocations: 1642)
+  Rendered todos/index.html.erb within layouts/application (Duration: 37.3ms | Allocations: 15989)
+  Rendered layout layouts/application.html.erb (Duration: 107.2ms | Allocations: 52159)
+Completed 200 OK in 123ms (Views: 108.7ms | ActiveRecord: 7.9ms | Allocations: 57471)
+
+
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."user_id" = $1[0m  [["user_id", 1]]
+Started GET "/todos" for ::1 at 2022-09-01 13:48:04 +0530
+Processing by TodosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering todos/index.html.erb within layouts/application
+  [1m[36mTodo Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date < '2022-09-01') AND "todos"."completed" = $1[0m  [["completed", true]]
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date < '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE (due_date < '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:7
+  Rendered todos/_todo-section.html.erb (Duration: 4.5ms | Allocations: 2239)
+  [1m[36mTodo Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date = '2022-09-01') AND "todos"."completed" = $1[0m  [["completed", true]]
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date = '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE (due_date = '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:7
+  Rendered todos/_todo-section.html.erb (Duration: 6.3ms | Allocations: 3892)
+  [1m[36mTodo Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date > '2022-09-01') AND "todos"."completed" = $1[0m  [["completed", true]]
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE (due_date > '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:4
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE (due_date > '2022-09-01')[0m
+  ↳ app/views/todos/_todo-section.html.erb:7
+  Rendered todos/_todo-section.html.erb (Duration: 3.4ms | Allocations: 1642)
+  Rendered todos/index.html.erb within layouts/application (Duration: 50.4ms | Allocations: 13334)
+  Rendered layout layouts/application.html.erb (Duration: 66.1ms | Allocations: 27109)
+Completed 200 OK in 68ms (Views: 67.4ms | ActiveRecord: 9.5ms | Allocations: 27862)
+
+
