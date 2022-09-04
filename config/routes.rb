@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   # get "todos/:id", to: "todos#show"
   get "todos/important", to: "todos#important" 
 
+  get "/" => "home#index"
+
   resources :todos
+  resources :users
 end
