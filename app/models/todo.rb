@@ -1,5 +1,5 @@
 class Todo < ActiveRecord::Base
-    belongs_to :user
+    belongs_to :user, optional: true
 
     def due_today?
         due_date == Date.today
