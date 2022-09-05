@@ -27,10 +27,10 @@
                     <% end %>
                 </a>
 
-                <% if todo.important %>
-                    <input type="image" src="star-plus-outline.png" >
+                <%= form_with(url: "/todos/important/#{todo.id}", method: "put") do %>
+                    <input class="star" name= "important" type="checkbox" <%= todo.important ? "checked": "" %> 
+                    onClick="this.form.submit()" />
                 <% end %>
-                
             </label>
         </li>
     <% end %>

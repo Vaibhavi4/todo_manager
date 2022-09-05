@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
     def create
         User.create!(
-            firstname: params[:firstname],
-            lastname: params[:lastname],
+            firstname: params[:first_name],
+            lastname: params[:last_name],
             email: params[:email],
             password: params[:password]
         )

@@ -134,3 +134,20 @@ body {
 .TodoItem-container:hover .TodoItem-delete {
   visibility: visible;
 }
+
+.star {
+  visibility: hidden;
+  font-size: 15px;
+  cursor: pointer;
+  padding-left: 5px;
+  padding-bottom: 2px;
+}
+.star:before {
+  content: "\2606";
+  position: fixed;
+  visibility: visible;
+}
+.star:checked:before {
+  content: "\2605";
+  position: fixed;
+}
