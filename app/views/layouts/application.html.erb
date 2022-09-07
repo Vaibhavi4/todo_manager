@@ -14,8 +14,10 @@
     <% if @current_user %>
       <p class="UserHeader" >
         Welcome <%= @current_user.firstname %>!
+        <%= link_to "sign-out", destroy_session_path, data: { turbo_method: :delete } %>
       </p>
     <% end %>
+
     <%= yield %>
   </body>
 </html>
